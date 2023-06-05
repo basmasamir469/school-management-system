@@ -28,5 +28,5 @@ return [
     'Edit'=>'تعديل',
     'Delete'=>'حذف',
     'Close' => 'اغلاق',
-
+    'failed to delete! there are sections belongs to this class'=>'فشل الحذف! يوجد اقسام تنتمي لهذا الفصل الدراسي'
 ];

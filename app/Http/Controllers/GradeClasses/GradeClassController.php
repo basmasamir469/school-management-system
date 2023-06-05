@@ -137,6 +137,13 @@ class GradeClassController extends Controller
     {
         //
         $gclass=GradeClass::findOrFail($id);
+        if($gclass->sections()->count()) {
+            return response()->json([
+                'data'=>[],
+                'status'=>false,
+                'msg'=>trans('sections.failed to delete! there are sections belongs to this class')
+            ]);    
+        }
         if($gclass->delete()){
             return response()->json([
                 'data'=>[],
@@ -156,6 +163,13 @@ class GradeClassController extends Controller
        $grade_classes=json_decode($request->checked_rows);
        foreach($grade_classes as $gclass){
         $gclass=GradeClass::findOrFail($gclass);
+        if($gclass->sections()->count()) {
+            return response()->json([
+                'data'=>[],
+                'status'=>false,
+                'msg'=>trans('sections.failed to delete! there are sections belongs to this class').$gclass->class_name
+            ]);    
+        }
         if(!$gclass || !$gclass->delete()){
         return response()->json([
             'data'=>[],

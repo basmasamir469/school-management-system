@@ -3,7 +3,15 @@
 namespace App\Http\Controllers\GradeClasses;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Sections\StoreSectionRequest;
+use App\Http\Requests\Sections\UpdateSectionRequest;
+use App\Http\Resources\SectionResource;
+use App\Models\Grade;
+use App\Models\GradeClass;
+use App\Models\Section;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SectionController extends Controller
 {
@@ -15,6 +23,12 @@ class SectionController extends Controller
     public function index()
     {
         //
+        $grades=Grade::with(['sections','grade_classes'])->withCount('sections')->get();
+        $grade_classes=GradeClass::all();
+        $sections=Section::all();
+        $teachers=Teacher::all();
+        return view('sections.index',compact('grades','grade_classes','sections','teachers'));
+
     }
 
     /**
@@ -33,9 +47,31 @@ class SectionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSectionRequest $request)
     {
         //
+        if(request()->ajax()){
+            $request->merge(['status'=>$request->status?1:0]);
+            // DB::beginTransaction();
+            $section=Section::create(array_except($request->all(),['teachers']));
+            $section->teachers()->attach($request->teachers);
+            // DB::commit();
+            if($section){
+                return response()->json([
+                    'data'=>new SectionResource($section),
+                    'status'=>true,
+                    'msg'=>'success'
+                ]);
+            }
+    
+                return response()->json([
+                    'data'=>[],
+                    'status'=>false,
+                    'msg'=>'failed to save'
+                ]);
+            // return redirect()->back();
+        }
+    
     }
 
     /**
@@ -67,9 +103,28 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSectionRequest $request, $id)
     {
         //
+        $section=Section::find($id);
+        $request->merge(['status'=>$request->status?1:0]);
+        // DB::beginTransaction();
+        $section->update(array_except($request->all(),['teachers']));
+        $section->teachers()->sync($request->teachers);
+        // DB::commit();
+        if($section){
+            return response()->json([
+                'data'=>new SectionResource($section->fresh()),
+                'status'=>true,
+                'msg'=>'success'
+            ]);
+        }
+
+            return response()->json([
+                'data'=>[],
+                'status'=>false,
+                'msg'=>'failed to update'
+            ]);
     }
 
     /**
@@ -80,6 +135,19 @@ class SectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $section=Section::findOrFail($id);
+        if($section->delete()){
+            return response()->json([
+                'data'=>[],
+                'status'=>true,
+                'msg'=>trans('main_trans.data deleted successfully')
+            ]);
+        }
+        return response()->json([
+            'data'=>[],
+            'status'=>false,
+            'msg'=>trans('grades.failed to delete! something wrong is happened')
+        ]);
+
     }
 }

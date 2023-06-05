@@ -15,8 +15,17 @@ class Section extends Model
     public $translatable = ['section_name'];
     public $timestamps = true;
 
-    public function grade_classes(){
-        return $this->belongsTo(GradeClass::class);
+    public function grade_class(){
+        return $this->belongsTo(GradeClass::class,'gradeClass_id');
     }
+
+    public function grade(){
+        return $this->belongsTo(Grade::class);
+    }
+
+    public function teachers(){
+        return $this->belongsToMany(Teacher::class,'section_teacher');
+    }
+
 
 }

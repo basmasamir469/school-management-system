@@ -22,7 +22,7 @@
                     </li>
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>
-                    <!-- menu item Elements-->
+                    <!-- Grades-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
                             <div class="pull-left"><i class="ti-palette"></i><span
@@ -34,7 +34,7 @@
                             <li><a href="{{route('Grades.index')}}">{{trans('main_trans.Grades_list')}}</a></li>
                         </ul>
                     </li>
-                    <!-- menu item calendar-->
+                    <!-- classes -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
                             <div class="pull-left"><i class="ti-calendar"></i><span
@@ -46,12 +46,38 @@
                             <li> <a href="{{route('GradeClasses.index')}}">{{__('classes.List_classes')}}</a> </li>
                         </ul>
                     </li>
-                    <!-- menu item todo-->
+                    <!-- Sections-->
                     <li>
-                        <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">Todo
-                                list</span> </a>
+                        <a href="{{route('Sections.index')}}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{trans('sections.title_page')}}</span> </a>
                     </li>
-                    <!-- menu item chat-->
+
+                    <!-- Parents-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Parents-menu">
+                            <div class="pull-left"><i class="fa fa-user-plus"></i><span
+                                    class="right-nav-text">{{trans('main_trans.Parents')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('add_parent')}}">{{trans('main_trans.List_Parents')}}</a> </li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Teachers-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Teachers-menu">
+                            <div class="pull-left"><i class="fa fa-user-plus"></i><span
+                                    class="right-nav-text">{{trans('main_trans.Teachers')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Teachers-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('Teachers.index')}}">{{trans('main_trans.List_Teachers')}}</a> </li>
+                        </ul>
+                    </li>
+                    
+                    {{-- <!-- menu item chat-->
                     <li>
                         <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat
                             </span></a>
@@ -225,7 +251,7 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>

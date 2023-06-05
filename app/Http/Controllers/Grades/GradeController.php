@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Grades;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Grades\StoreGradeRequest;
 use App\Http\Requests\Grades\UpdateGradeRequest;
+use App\Http\Resources\GradeClassCollection;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 
@@ -146,4 +147,29 @@ class GradeController extends Controller
         ]);
 
     }
+
+    public function gradeClasses($id)
+    {
+        //
+        if(request()->ajax()){
+        $grade=Grade::find($id);
+        if($grade){
+            return response()->json([
+                'data'=>new GradeClassCollection($grade->grade_classes),
+                'status'=>true,
+                'msg'=>'success'
+            ]);
+        }
+
+            return response()->json([
+                'data'=>[],
+                'status'=>false,
+                'msg'=>'failed to save'
+            ]);
+        // return redirect()->back();
+    }
+}
+
+
+
 }

@@ -147,14 +147,47 @@ return [
     */
 
     'attributes' => [
-        'name.en'=>'stage name in english',
-        'name.ar'=>'stage name in arabic',
+        'name.en'=>' name in english',
+        'name.ar'=>' name in arabic',
         'data.classes_list.*.class_name_ar'=>'class name in arabic',
         'data.classes_list.*.class_name_en'=>'class name in english ',
         'data.classes_list.*.grade_id'=>'grade name ',
         'class_name_ar'=>'class name in arabic',
         'class_name_en'=>'class name in english ',
-        'grade_id'=>'grade name '
+        'grade_id'=>'grade name',
+        'Email'=>'Email',
+        'National_ID_Father' => 'National_ID_Father',
+        'Passport_ID_Father' => 'Passport_ID_Father',
+        'Phone_Father' => 'Phone_Father',
+        'National_ID_Mother' => 'National_ID_Mother',
+        'Passport_ID_Mother' => 'Passport_ID_Mother',
+        'Phone_Mother' => 'Phone_Mother',
+        'Password'=>'Password',
+        'Name_Father'=>'Father Name in arabic',
+        'Name_Father_en'=>'Father Name in english',
+        'Job_Father'=>'Father Job in arabic',
+        'Job_Father_en'=>'Father Job in english',
+        'Nationality_Father_id'=>'Father nationality',
+        'Blood_Type_Father_id'=>'Father blood type',
+        'Address_Father'=>'Father address',
+        'Religion_Father_id'=>' Father religion',
+        'Name_Mother'=>'Mother Name in arabic ',
+        'Name_Mother_en'=>'Mother Name in english',
+        'Job_Mother'=>'Mother Job in arabic',
+        'Job_Mother_en'=>'Mother Job in english',
+        'Nationality_Mother_id'=>'Mother nationality',
+        'Blood_Type_Mother_id'=>'Mother blood type',
+        'Address_Mother'=>'Mother address',
+        'Religion_Mother_id'=>'Mother religion',
+        'specialization_id'=>'التخصص',
+        'gender_id'=>'gender',
+        'password'=>'password',
+        'email'=>'email',
+        'joining_date'=>'Joining Date',
+        'address'=>'address',
+        'teachers'=>'teachers'
+
+
     ],
 
 ];

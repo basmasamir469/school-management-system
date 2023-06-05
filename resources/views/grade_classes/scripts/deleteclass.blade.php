@@ -27,7 +27,8 @@ $(document).on('click', '#deleteClass', function (e) {
                  $(`#classTable tr#grade_class${gclass_id}`).remove()
                 }
                 else if(data.status===false){
-                  swal(data.msg, "error");
+                  $(`#deleteClassModal${gclass_id}`).modal('hide');
+                  swal(data.msg,"", "error");
                   }
            },
            error:function(reject){
@@ -72,7 +73,8 @@ $(document).on('click', '#delete_checked', function (e) {
                 $(`#classTable tr#grade_class${id}`).remove()
                 }
                 else if(data.status===false){
-                  swal(data.msg, "error");
+                  $(`#deleteCheckedModal`).modal('hide');
+                  swal(data.msg,"", "error");
                   }
            },
            error:function(reject){

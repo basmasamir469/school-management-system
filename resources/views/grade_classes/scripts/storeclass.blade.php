@@ -25,6 +25,7 @@
                 if(data.status===true){
                 $('#storeClassModal').modal('hide');
                 $('#storeClassForm input').val('')
+                $('#storeClassForm select.custom-select').val('')
                  $('#storeClassForm select.fancyselect option[value=""]').prop('selected',true)
                  $('#storeClassForm div.fancyselect').next(".current").text("{{__('classes.Name_Grade')}}")
                 $.each(document.querySelectorAll("#storeClassForm small[id$=_error]"),function(key,val){
@@ -79,7 +80,7 @@
                                             <select class="form-control fancy-select" name="grade_id">
                                               <option value="">{{__('classes.Name_Grade')}}</option>
                                                 @foreach ($grades as $grade)
-                                                    <option value="{{ $grade->id }}" >{{ $grade->name }}</option>
+                                                    <option value="{{ $grade->id }}" ${d.grade_id=="{{$grade->id}}"?'selected':''} >{{ $grade->name }}</option>
                                                 @endforeach
                                             </select>
                                             <small id="grade_id_error_edit" name="grade_id_error_edit"  class="form-text text-danger"></small>
