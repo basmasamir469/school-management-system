@@ -46,26 +46,26 @@ $(document).on('submit', '#storeSectionForm', function (e) {
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{trans('classes.edit_class')}}</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">{{trans('sections.edit_Section')}}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                       </div>
-                                      <form method="post" class="editSectionForm" section_id=${data.data.id} grade_id=${data.data.grade_id}>
+                                      <form method="post" class="editSectionForm" id="sectionForm${data.data.id}" section_id=${data.data.id} grade_id=${data.data.grade_id}>
                                         @csrf
                                         @method('PATCH')
                                       <div class="modal-body">
                                                   <div class="row">
                                                     <input type="hidden" name="id" value=${data.data.id}>
                                                     <div class="col-sm-6 mb-3">
-                                                      <h5 class="form-label" for="">{{trans('classes.Name_class')}}</h5>
-                                                      <input type="text" class="form-control mb-3" name="section_name[ar]" value=${data.data.section_name_ar}>
-                                                      <small id="section_name.ar_error_edit"  class="form-text text-danger"></small>
+                                                      <h5 class="form-label" for="">{{trans('sections.Section_name_ar')}}</h5>
+                                                      <input type="text" class="form-control mb-3" name="section_name_ar" value=${data.data.section_name_ar}>
+                                                      <small id="section_name_ar_error_edit"  class="form-text text-danger"></small>
                                                     </div>
                                                     <div class="col-sm-6 mb-3">
-                                                      <h5 class="form-label" for="">{{trans('classes.Name_class_en')}}</h5>
-                                                      <input type="text" class="form-control mb-3" name="section_name[en]" value=${data.data.section_name_en}>
-                                                      <small id="section_name.en_error_edit" class="form-text text-danger"></small>
+                                                      <h5 class="form-label" for="">{{trans('sections.Section_name_en')}}</h5>
+                                                      <input type="text" class="form-control mb-3" name="section_name_en" value=${data.data.section_name_en}>
+                                                      <small id="section_name_en_error_edit" class="form-text text-danger"></small>
                                                     </div>
                                                   </div>
                                                   <div class="row">
@@ -97,7 +97,7 @@ $(document).on('submit', '#storeSectionForm', function (e) {
                                                       <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" name="teachers[]" value="{{$teacher->id}}" id="flexCheckDefault{{$teacher->id}}" ${array_teachers.includes({{$teacher->id}})?'checked':''} >
                                                         <label class="form-check-label" for="flexCheckDefault{{$teacher->id}}">
-                                                          {{$teacher->name}}
+                                                          {{$teacher->name}} -- {{$teacher->specialization->name}}
                                                         </label>
                                                       </div>
                                                       @endforeach
@@ -138,7 +138,7 @@ $(document).on('submit', '#storeSectionForm', function (e) {
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title">{{trans('classes.delete_class')}}</h5>
+                                        <h5 class="modal-title">{{trans('sections.delete_Section')}}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>

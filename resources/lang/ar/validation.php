@@ -147,8 +147,8 @@ return [
     */
 
     'attributes' => [
-        'name.en'=>'الاسم بالانجليزية',
-        'name.ar'=>'الاسم بالعربية',
+        'name_en'=>'الاسم بالانجليزية',
+        'name_ar'=>'الاسم بالعربية',
         'data.classes_list.*.class_name_ar'=>'اسم الفصل الدراسي بالعربية ',
         'data.classes_list.*.class_name_en'=>'اسم الفصل الدراسي بالانجليزية ',
         'data.classes_list.*.grade_id'=>'اسم المرحلة ',
@@ -188,7 +188,19 @@ return [
         'email'=>'البريد الالكتروني',
         'joining_date'=>'تاريخ التعيين',
         'address'=>'العنوان',
-        'teachers'=>'المعلمين'
+        'teachers'=>'المعلمين',
+        'section_name_en'=>'اسم القسم بالانجليزية',
+        'section_name_ar'=>'اسم القسم بالعربية',
+        'gradeClass_id'=>' اسم الصف',
+        'student_name_en'=>'اسم الطالب بالانجليزية',
+        'student_name_ar'=>'اسم الطالب العربية',
+        'academic_year'=>'السنة الدراسية',
+        'parent_id'=>'اسم ولي الامر',
+        'nationality_id'=>'الجنسية',
+        'blood_type_id'=>'فصيلة الدم',
+        'grade_class_id'=>'الفصل الدراسي',
+        'section_id'=>'اسم القسم',
+        'birth_date'=>'تاريخ الميلاد'
         
         
 

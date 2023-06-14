@@ -52,10 +52,11 @@ class SectionController extends Controller
         //
         if(request()->ajax()){
             $request->merge(['status'=>$request->status?1:0]);
-            // DB::beginTransaction();
-            $section=Section::create(array_except($request->all(),['teachers']));
+             DB::beginTransaction();
+             $input=array_merge(['section_name'=>['en'=>$request->section_name_en,'ar'=>$request->section_name_ar]],$request->all());
+            $section=Section::create(array_except($input,['teachers','section_name_en','section_name_ar']));
             $section->teachers()->attach($request->teachers);
-            // DB::commit();
+             DB::commit();
             if($section){
                 return response()->json([
                     'data'=>new SectionResource($section),
@@ -108,10 +109,11 @@ class SectionController extends Controller
         //
         $section=Section::find($id);
         $request->merge(['status'=>$request->status?1:0]);
-        // DB::beginTransaction();
-        $section->update(array_except($request->all(),['teachers']));
+        DB::beginTransaction();
+        $input=array_merge(['section_name'=>['en'=>$request->section_name_en,'ar'=>$request->section_name_ar]],$request->all());
+        $section->update(array_except($input,['teachers','section_name_en','section_name_ar']));
         $section->teachers()->sync($request->teachers);
-        // DB::commit();
+         DB::commit();
         if($section){
             return response()->json([
                 'data'=>new SectionResource($section->fresh()),

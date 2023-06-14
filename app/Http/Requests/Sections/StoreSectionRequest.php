@@ -24,8 +24,8 @@ class StoreSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'section_name.ar'=>'required|unique:sections,section_name->ar',
-            'section_name.en'=>'required|unique:sections,section_name->en',
+            'section_name_ar'=>'required|unique:sections,section_name->ar',
+            'section_name_en'=>'required|unique:sections,section_name->en',
             'grade_id'=>'required',
             'gradeClass_id'=>'required',
             'teachers'=>'required'

@@ -20,6 +20,7 @@ class SectionResource extends JsonResource
         return [
             'id' => $this->id,
             'class_name' => $this->grade_class->class_name,
+            'gradeClass_id'=>$this->gradeClass_id,
             'grade_id' => $this->grade_id,
             'section_name'=>$this->section_name,
             'section_name_ar'=>$this->getTranslation('section_name','ar'),

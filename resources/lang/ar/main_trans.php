@@ -22,6 +22,10 @@ return [
     'students'=>'الطلاب',
     'Teachers'=>'المعلمين',
     'List_Teachers' => 'قائمة المعلمين',
+    'List_sections'=>'قائمة الاقسام الدراسية',
+    'students'=>'الطلاب',
+    'add_student'=>'اضافة طالب جديد',
+    'edit_student'=>'تعديل طالب ',
 
     
     ];

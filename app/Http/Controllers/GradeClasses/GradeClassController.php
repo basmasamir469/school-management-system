@@ -204,4 +204,26 @@ class GradeClassController extends Controller
 
     }
 
+    public function getSections($id)
+    {
+        //
+        if(request()->ajax()){
+        $grade_class=GradeClass::find($id);
+        if($grade_class){
+            return response()->json([
+                'data'=>$grade_class->sections,
+                'status'=>true,
+                'msg'=>'success'
+            ]);
+        }
+
+            return response()->json([
+                'data'=>[],
+                'status'=>false,
+                'msg'=>'failed to save'
+            ]);
+        // return redirect()->back();
+    }
+}
+
 }

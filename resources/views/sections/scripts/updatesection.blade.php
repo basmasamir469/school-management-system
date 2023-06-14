@@ -7,8 +7,10 @@ $(document).on('submit', '.editSectionForm', function (e) {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
+     var id=$(this).attr('id')
        var formData = new FormData($(this)[0]);
        console.log(formData)
+       var sectionForm=$(this)
        var section_id=$(this).attr('section_id')
        var grade_id=$(this).attr('grade_id')
        var url = "{{ route('Sections.update', ":id") }}";
@@ -31,6 +33,7 @@ $(document).on('submit', '.editSectionForm', function (e) {
                 if(data.status===true){
                  $(`#editSectionModal${section.id}`).modal('hide');
                    swal("{{__('main_trans.It updated successfully!')}}","", "success");
+                   $('body').removeClass("modal-open");
                    if(grade_id != section.grade_id){
                     $(`#gradeTable${grade_id} tr#section${section.id}`).remove()
                     $(`#gradeTable${section.grade_id}`).append(`
@@ -49,26 +52,26 @@ $(document).on('submit', '.editSectionForm', function (e) {
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{trans('classes.edit_class')}}</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">{{trans('sections.edit_Section')}}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                       </div>
-                                      <form method="post" class="editSectionForm" section_id=${section.id} grade_id=${section.grade_id}>
+                                      <form method="post" class="editSectionForm" id="sectionForm${section.id}" section_id=${section.id} grade_id=${section.grade_id}>
                                         @csrf
                                         @method('PATCH')
                                       <div class="modal-body">
                                                   <div class="row">
                                                     <input type="hidden" name="id" value=${section.id}>
                                                     <div class="col-sm-6 mb-3">
-                                                      <h5 class="form-label" for="">{{trans('classes.Name_class')}}</h5>
-                                                      <input type="text" class="form-control mb-3" name="section_name[ar]" value=${section.section_name_ar}>
-                                                      <small id="section_name.ar_error_edit"  class="form-text text-danger"></small>
+                                                      <h5 class="form-label" for="">{{trans('sections.Section_name_ar')}}</h5>
+                                                      <input type="text" class="form-control mb-3" name="section_name_ar" value=${section.section_name_ar}>
+                                                      <small id="section_name_ar_error_edit"  class="form-text text-danger"></small>
                                                     </div>
                                                     <div class="col-sm-6 mb-3">
-                                                      <h5 class="form-label" for="">{{trans('classes.Name_class_en')}}</h5>
-                                                      <input type="text" class="form-control mb-3" name="section_name[en]" value=${section.section_name_en}>
-                                                      <small id="section_name.en_error_edit" class="form-text text-danger"></small>
+                                                      <h5 class="form-label" for="">{{trans('sections.Section_name_en')}}</h5>
+                                                      <input type="text" class="form-control mb-3" name="section_name_en" value=${section.section_name_en}>
+                                                      <small id="section_name_en_error_edit" class="form-text text-danger"></small>
                                                     </div>
                                                   </div>
                                                   <div class="row">
@@ -100,7 +103,7 @@ $(document).on('submit', '.editSectionForm', function (e) {
                                                       <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" name="teachers[]" value="{{$teacher->id}}" id="flexCheckDefault{{$teacher->id}}" ${array_teachers.includes({{$teacher->id}})?'checked':''} >
                                                         <label class="form-check-label" for="flexCheckDefault{{$teacher->id}}">
-                                                          {{$teacher->name}}
+                                                          {{$teacher->name}} -- {{$teacher->specialization->name}}
                                                         </label>
                                                       </div>
                                                       @endforeach
@@ -139,7 +142,7 @@ $(document).on('submit', '.editSectionForm', function (e) {
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title">{{trans('classes.delete_class')}}</h5>
+                                        <h5 class="modal-title">{{trans('sections.delete_Section')}}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>
@@ -174,7 +177,7 @@ $(document).on('submit', '.editSectionForm', function (e) {
              var response=$.parseJSON(reject.responseText)
              console.log(response.errors);
              $.each(response.errors,function(key,val){
-               document.getElementById(`${key}_error_edit`).textContent=val[0]
+               $(`#${id} #${key}_error_edit`).text(val[0])
              })
            }
 })

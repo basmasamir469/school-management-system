@@ -24,8 +24,8 @@ class UpdateGradeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name.ar'=>'required|unique:grades,name->ar,'.$this->id,
-            'name.en'=>'required|unique:grades,name->en,'.$this->id
+            'name_ar'=>'required|unique:grades,name->ar,'.$this->id,
+            'name_en'=>'required|unique:grades,name->en,'.$this->id
         ];
     }
 }

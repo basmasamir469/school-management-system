@@ -38,13 +38,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),	'middleware' => [ 'l
 		Route::resource('GradeClasses',GradeClassController::class);
 		Route::post('GradeClasses/delete/checked',[GradeClassController::class,'deleteChecked'])->name('GradeClasses.deleteChecked');
 		Route::post('GradeClasses/filter/grade',[GradeClassController::class,'filterGrade'])->name('GradeClasses.filterGrade');
-
+		Route::get('GradeClasses/sections/{id}',[GradeClassController::class,'getSections'])->name('GradeClasses.get_sections');
 		Route::resource('Sections',SectionController::class);
 	});
 
 	Route::group(['namespace'=>'Teachers'],function(){
 		Route::resource('Teachers','TeacherController');
 	});
+
+	Route::group(['namespace'=>'Students'],function(){
+		Route::resource('Students','StudentController');
+	});
+
 
 
 

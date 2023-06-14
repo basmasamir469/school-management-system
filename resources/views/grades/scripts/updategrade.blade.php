@@ -9,6 +9,7 @@ $(document).on('submit', '.editGradeForm', function (e) {
     });
        var formData = new FormData($(this)[0]);
        console.log(formData)
+       var id=$(this).attr('id')
        var grade_id=$(this).attr('grade_id')
        var url = "{{ route('Grades.update', ":id") }}";
            url = url.replace(':id', grade_id);
@@ -31,6 +32,9 @@ $(document).on('submit', '.editGradeForm', function (e) {
                    swal("حسنا!", "!تم تعديل البيانات بنجاح", "success");
                    var name=data.data.name.ar
                  }
+                 $.each(document.querySelectorAll(`[id$=_error_edit${grade_id}]`),function(key,val){
+                val.textContent=''
+                  })
                  $(`#gradeTable tr#grade${grade_id} td:eq(1)`).text(name)
                  $(`#gradeTable tr#grade${grade_id} td:eq(2)`).text(data.data.notes?data.data.notes:'')
                 }
@@ -39,13 +43,13 @@ $(document).on('submit', '.editGradeForm', function (e) {
                   }
            },
            error:function(reject){
-            $.each(document.querySelectorAll("[id$=_error_edit]"),function(key,val){
+            $.each(document.querySelectorAll(`[id$=_error_edit${grade_id}]`),function(key,val){
                 val.textContent=''
             })
              var response=$.parseJSON(reject.responseText)
              console.log(response.errors);
              $.each(response.errors,function(key,val){
-               document.getElementById(`${key}_error_edit`).textContent=val[0]
+               $(`#${key}_error_edit${grade_id}`).text(val[0])
              })
            }
 })

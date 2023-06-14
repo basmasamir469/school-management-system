@@ -18,6 +18,7 @@ $(document).on('click', '#deleteSection', function (e) {
                  $(`#deleteSectionModal${section_id}`).modal('hide');
                    swal("{{__('main_trans.data deleted successfully')}}","","success");
                  $(`#gradeTable${grade_id} tr#section${section_id}`).remove()
+                 $('body').removeClass("modal-open");
                 }
                 else if(data.status===false){
                   $(`#deleteSectionModal${section_id}`).modal('hide');

@@ -76,6 +76,22 @@
                             <li> <a href="{{route('Teachers.index')}}">{{trans('main_trans.List_Teachers')}}</a> </li>
                         </ul>
                     </li>
+
+                    {{-- students --}}
+
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Students-menu">
+                            <div class="pull-left"><i class="fa fa-user-plus"></i><span
+                                    class="right-nav-text">{{trans('main_trans.students')}}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Students-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('Students.index')}}">{{trans('main_trans.students')}}</a> </li>
+                            <li> <a href="{{route('Students.create')}}">{{trans('main_trans.add_student')}}</a> </li>
+                        </ul>
+                    </li>
+
                     
                     {{-- <!-- menu item chat-->
                     <li>

@@ -147,8 +147,8 @@ return [
     */
 
     'attributes' => [
-        'name.en'=>' name in english',
-        'name.ar'=>' name in arabic',
+        'name_en'=>' name in english',
+        'name_ar'=>' name in arabic',
         'data.classes_list.*.class_name_ar'=>'class name in arabic',
         'data.classes_list.*.class_name_en'=>'class name in english ',
         'data.classes_list.*.grade_id'=>'grade name ',
@@ -179,13 +179,26 @@ return [
         'Blood_Type_Mother_id'=>'Mother blood type',
         'Address_Mother'=>'Mother address',
         'Religion_Mother_id'=>'Mother religion',
-        'specialization_id'=>'التخصص',
+        'specialization_id'=>'specialization',
         'gender_id'=>'gender',
         'password'=>'password',
         'email'=>'email',
         'joining_date'=>'Joining Date',
         'address'=>'address',
-        'teachers'=>'teachers'
+        'teachers'=>'teachers',
+        'section_name_en'=>'section name in english',
+        'section_name_ar'=>'section name in arabic',
+        'gradeClass_id'=>'class name',
+        'student_name_en'=>'student name in english',
+        'student_name_ar'=>'student name in arabic',
+        'academic_year'=>'academic year',
+        'parent_id'=>'parent name',
+        'nationality_id'=>'nationality',
+        'blood_type_id'=>' blood type',
+        'grade_class_id'=>'class name',
+        'section_id'=>' section name',
+        'birth_date'=>'birth date'
+
 
 
     ],

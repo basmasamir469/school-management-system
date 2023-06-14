@@ -24,8 +24,8 @@ class UpdateSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'section_name.ar'=>'required|unique:sections,section_name->ar,'.$this->id,
-            'section_name.en'=>'required|unique:sections,section_name->en,'.$this->id,
+            'section_name_ar'=>'required|unique:sections,section_name->ar,'.$this->id,
+            'section_name_en'=>'required|unique:sections,section_name->en,'.$this->id,
             'grade_id'=>'required',
             'gradeClass_id'=>'required',
             'teachers'=>'required'

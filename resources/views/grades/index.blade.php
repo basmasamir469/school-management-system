@@ -116,20 +116,20 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                                <form method="post" class="editGradeForm" grade_id={{$grade->id}}>
+                                <form method="post" class="editGradeForm" id="gradeForm{{$grade->id}}" grade_id={{$grade->id}}>
                                   @csrf
                                   @method('Patch')
                                   <div class="row">
                                     <input type="hidden" name="id" value="{{$grade->id}}">
                                     <div class="col-sm-6 mb-3">
                                       <h5 class="form-label" for="">{{trans('grades.Stage-in-arabic')}}</h5>
-                                      <input type="text" class="form-control mb-3" name="name[ar]" value="{{$grade->getTranslation('name','ar')}}">
-                                      <small id="name.ar_error_edit"  class="form-text text-danger"></small>
+                                      <input type="text" class="form-control mb-3" name="name_ar" value="{{$grade->getTranslation('name','ar')}}">
+                                      <small id="name_ar_error_edit{{$grade->id}}"  class="form-text text-danger"></small>
                                     </div>
                                     <div class="col-sm-6 mb-3">
                                       <h5 class="form-label" for="">{{trans('grades.Stage-in-english')}}</h5>
-                                      <input type="text" class="form-control mb-3" name="name[en]" value="{{$grade->getTranslation('name','en')}}">
-                                      <small id="name.en_error_edit" class="form-text text-danger"></small>
+                                      <input type="text" class="form-control mb-3" name="name_en" value="{{$grade->getTranslation('name','en')}}">
+                                      <small id="name_en_error_edit{{$grade->id}}" class="form-text text-danger"></small>
                                     </div>
                                   </div>
                                   <div class="row">

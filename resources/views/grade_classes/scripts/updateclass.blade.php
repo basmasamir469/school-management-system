@@ -7,7 +7,6 @@
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
-      // var formData = new FormData( $(this).parent('.modal-footer').parent('form.editClassForm')[0]);
       var formData = new FormData( $(this)[0]);
       console.log(formData)
        var gclass_id=$(this).attr('gclass_id')
@@ -26,6 +25,9 @@
                 if(data.status===true){
                  $(`#editClassModal${gclass_id}`).modal('hide');
                    swal( "{{trans('main_trans.It updated successfully!')}}","", "success");
+                   $.each(document.querySelectorAll(`[id$=_error_edit${gclass_id}]`),function(key,val){
+                val.textContent=''
+                  })
                  $(`#classTable tr#grade_class${gclass_id} td:eq(2)`).text(data.data.class_name)
                  $(`#classTable tr#grade_class${gclass_id} td:eq(3)`).text(data.data.grade_name)
                 }
@@ -34,13 +36,13 @@
                   }
            },
            error:function(reject){
-            $.each(document.querySelectorAll("small[id$=_error_edit]"),function(key,val){
+            $.each(document.querySelectorAll(`small[id$=_error_edit${gclass_id}]`),function(key,val){
                 val.textContent=''
             })
              var response=$.parseJSON(reject.responseText)
              console.log(response.errors);
              $.each(response.errors,function(key,val){
-               $(`small#${key}_error_edit`).text(val[0])
+               $(`#${key}_error_edit${gclass_id}`).text(val[0])
              })
            }
 })

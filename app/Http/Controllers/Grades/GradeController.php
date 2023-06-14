@@ -44,7 +44,10 @@ class GradeController extends Controller
     {
         //
         if(request()->ajax()){
-        $grade=Grade::create($request->all());
+        $grade=Grade::create([
+            'name'=>['en'=>$request->name_en,'ar'=>$request->name_ar],
+            'notes'=>$request->notes
+        ]);
         if($grade){
             return response()->json([
                 'data'=>$grade,
@@ -96,7 +99,7 @@ class GradeController extends Controller
         //
         $grade=Grade::find($id);
         $grade->update([
-            'name'=>$request->name,
+            'name'=>['en'=>$request->name_en,'ar'=>$request->name_ar],
             'notes'=>$request->notes
         ]);
         if($grade){

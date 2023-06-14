@@ -50,13 +50,13 @@
                     <div class="row">
                       <div class="col-sm-6 mb-3">
                         <h5 class="form-label" for="">{{trans('sections.Section_name_ar')}}</h5>
-                        <input type="text" class="form-control mb-3" name="section_name[ar]">
-                        <small id="section_name.ar_error"  class="form-text text-danger"></small>
+                        <input type="text" class="form-control mb-3" name="section_name_ar">
+                        <small id="section_name_ar_error"  class="form-text text-danger"></small>
                       </div>
                       <div class="col-sm-6 mb-3">
                         <h5 class="form-label" for="">{{trans('sections.Section_name_en')}}</h5>
-                        <input type="text" class="form-control mb-3" name="section_name[en]">
-                        <small id="section_name.en_error" class="form-text text-danger"></small>
+                        <input type="text" class="form-control mb-3" name="section_name_en">
+                        <small id="section_name_en_error" class="form-text text-danger"></small>
                       </div>
                     </div>
                     <div class="row">
@@ -88,7 +88,7 @@
                         <div class="form-check">
                           <input class="form-check-input teachers" type="checkbox" name="teachers[]" value="{{$teacher->id}}" id="flexCheckDefault{{$teacher->id}} ">
                           <label class="form-check-label" for="flexCheckDefault{{$teacher->id}}">
-                            {{$teacher->name}}
+                            {{$teacher->name}} -- {{$teacher->specialization->name}}
                           </label>
                         </div>
                         @endforeach
@@ -149,7 +149,7 @@
                         @endif
                       </td>
                       <td>
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop='false'
                                 data-target="#editSectionModal{{ $section->id }}"
                                 title="{{ trans('main_trans.Edit') }}"><i
                                 class="fa fa-edit"></i></button>
@@ -158,26 +158,26 @@
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{trans('classes.edit_class')}}</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">{{trans('sections.edit_Section')}}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                       </div>
-                                      <form method="post" class="editSectionForm" section_id={{$section->id}} grade_id={{$section->grade_id}}>
+                                      <form method="post" class="editSectionForm" id="sectionForm{{$section->id}}" section_id={{$section->id}} grade_id={{$section->grade_id}}>
                                         @csrf
                                         @method('PATCH')
                                       <div class="modal-body">
                                                   <div class="row">
                                                     <input type="hidden" name="id" value="{{$section->id}}">
                                                     <div class="col-sm-6 mb-3">
-                                                      <h5 class="form-label" for="">{{trans('classes.Name_class')}}</h5>
-                                                      <input type="text" class="form-control mb-3" name="section_name[ar]" value="{{$section->getTranslation('section_name','ar')}}">
-                                                      <small id="section_name.ar_error_edit"  class="form-text text-danger"></small>
+                                                      <h5 class="form-label" for="">{{trans('sections.Section_name_ar')}}</h5>
+                                                      <input type="text" class="form-control mb-3" name="section_name_ar" value="{{$section->getTranslation('section_name','ar')}}">
+                                                      <small id="section_name_ar_error_edit"  class="form-text text-danger"></small>
                                                     </div>
                                                     <div class="col-sm-6 mb-3">
-                                                      <h5 class="form-label" for="">{{trans('classes.Name_class_en')}}</h5>
-                                                      <input type="text" class="form-control mb-3" name="section_name[en]" value="{{$section->getTranslation('section_name','en')}}">
-                                                      <small id="section_name.en_error_edit" class="form-text text-danger"></small>
+                                                      <h5 class="form-label" for="">{{trans('sections.Section_name_en')}}</h5>
+                                                      <input type="text" class="form-control mb-3" name="section_name_en" value="{{$section->getTranslation('section_name','en')}}">
+                                                      <small id="section_name_en_error_edit" class="form-text text-danger"></small>
                                                     </div>
                                                   </div>
                                                   <div class="row">
@@ -209,7 +209,7 @@
                                                       <div class="form-check">
                                                         <input class="form-check-input" type="checkbox" name="teachers[]" value="{{$teacher->id}}" id="flexCheckDefault{{$teacher->id}}" @if(in_array($teacher->id,$section->teachers->pluck('id')->toArray())) checked @endif>
                                                         <label class="form-check-label" for="flexCheckDefault{{$teacher->id}}">
-                                                          {{$teacher->name}}
+                                                          {{$teacher->name}} -- {{$teacher->specialization->name}}
                                                         </label>
                                                       </div>
                                                       @endforeach
@@ -242,7 +242,7 @@
                                 {{-- end section modal --}}
                 
               
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" 
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-backdrop="false"
                                 data-target="#deleteSectionModal{{ $section->id }}"
                                 title="{{ trans('main_trans.Delete') }}"><i
                                 class="fa fa-trash"></i></button>
@@ -251,7 +251,7 @@
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title">{{trans('classes.delete_class')}}</h5>
+                                        <h5 class="modal-title">{{trans('sections.delete_Section')}}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>

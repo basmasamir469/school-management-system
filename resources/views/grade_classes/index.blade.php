@@ -178,7 +178,7 @@ float:unset !important;
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <form method="post" class="editClassForm" gclass_id={{$gclass->id}}>
+                        <form method="post" class="editClassForm" id="gradeClassForm{{$gclass->id}}" gclass_id={{$gclass->id}}>
                           @csrf
                           @method('PATCH')
                         <div class="modal-body">
@@ -187,12 +187,12 @@ float:unset !important;
                                       <div class="col-sm-6 mb-3">
                                         <h5 class="form-label" for="">{{trans('classes.Name_class')}}</h5>
                                         <input type="text" class="form-control mb-3" name="class_name_ar" value="{{$gclass->getTranslation('class_name','ar')}}">
-                                        <small id="class_name_ar_error_edit"  class="form-text text-danger"></small>
+                                        <small id="class_name_ar_error_edit{{$gclass->id}}"  class="form-text text-danger"></small>
                                       </div>
                                       <div class="col-sm-6 mb-3">
                                         <h5 class="form-label" for="">{{trans('classes.Name_class_en')}}</h5>
                                         <input type="text" class="form-control mb-3" name="class_name_en" value="{{$gclass->getTranslation('class_name','en')}}">
-                                        <small id="class_name_en_error_edit" class="form-text text-danger"></small>
+                                        <small id="class_name_en_error_edit{{$gclass->id}}" class="form-text text-danger"></small>
                                       </div>
                                     </div>
                                     <div class="row">
@@ -204,7 +204,7 @@ float:unset !important;
                                                     <option value="{{ $grade->id }}" @if($gclass->grade_id==$grade->id) selected @endif>{{ $grade->name }}</option>
                                                 @endforeach
                                             </select>
-                                            <small id="grade_id_error_edit" name="grade_id_error_edit"  class="form-text text-danger"></small>
+                                            <small id="grade_id_error_edit{{$gclass->id}}" name="grade_id_error_edit"  class="form-text text-danger"></small>
                                         </div>
                                     </div>
                         </div>

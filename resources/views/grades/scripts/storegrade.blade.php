@@ -51,13 +51,13 @@ $(document).on('click', '#storeGrade', function (e) {
                                   <div class="row">
                                     <div class="col-sm-6 mb-3">
                                       <h5 class="form-label" for="">${lang=='en'?'Stage-in-english':'اسم المرحلة بالانجليزية'}</h5>
-                                      <input type="text" class="form-control mb-3" name="name[ar]" value="${data.data.name.ar}">
-                                      <small id="name.ar_error_edit"  class="form-text text-danger"></small>
+                                      <input type="text" class="form-control mb-3" name="name_ar" value="${data.data.name.ar}">
+                                      <small id="name_ar_error_edit${data.data.id}"  class="form-text text-danger"></small>
                                     </div>
                                     <div class="col-sm-6 mb-3">
                                       <h5 class="form-label" for="">${lang=='en'?'Stage-in-arabic':'اسم المرحلة بالعربية'}</h5>
-                                      <input type="text" class="form-control mb-3" name="name[en]" value="${data.data.name.en}">
-                                      <small id="name.en_error_edit" class="form-text text-danger"></small>
+                                      <input type="text" class="form-control mb-3" name="name_en" value="${data.data.name.en}">
+                                      <small id="name_en_error_edit${data.data.id}" class="form-text text-danger"></small>
                                     </div>
                                   </div>
                                   <div class="row">
