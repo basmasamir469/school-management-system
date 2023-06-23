@@ -27,4 +27,14 @@ return [
 'Teachers'=>'Teachers',
 'List_Teachers' => 'List Teachers',
 'edit_student'=>'Edit Student',
+'failed to save'=>'Failed to save data !',
+'Students_Promotions'=>'Students Promotions',
+'new_school_grade'=>'New School Grade',
+'old_school_grade'=>'Old School Grade',
+'management_of_student_promotions'=>'Manage Student Promotions',
+'list_promotions'=>'Promotions',
+'Graduate_students'=>'Graduate Students',
+'add_Graduate'=>'Add Graduate',
+'list_Graduate'=>'Graduated Students',
+'Are you sure of this process?'=>'Are you sure of this process?'
 ];

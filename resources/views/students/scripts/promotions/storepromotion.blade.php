@@ -1,16 +1,16 @@
 <script>
-$(document).on('click', '#storeStudent', function (e) {
+$(document).on('submit', '#storePromotionForm', function (e) {
        e.preventDefault();
        $.ajaxSetup({
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
       });
-       var formData = new FormData($('#studentForm')[0]);
+       var formData = new FormData($(this)[0]);
        $.ajax({
            type: 'post',
            enctype: 'multipart/form-data',
-           url: "{{route('Students.store')}}",
+           url: "{{route('Promotions.store')}}",
            data: formData,
            processData: false,
            contentType: false,
@@ -38,7 +38,7 @@ $(document).on('click', '#storeStudent', function (e) {
 })
 })
 
-$(document).on('change', '#student_grades', function (e) {
+$(document).on('change', '#new_student_grades', function (e) {
   e.preventDefault();
      var grade_id=$(this).val()
        var url = "{{ route('Grades.get_classes', ":id") }}";
@@ -54,10 +54,10 @@ $(document).on('change', '#student_grades', function (e) {
                 if(data.status===true){
                  console.log(data.data)
                  var classes=data.data.data
-                 $('select#student_classes').empty()
-                 $('select#student_classes').append(`<option value="" selected>{{__('Parent_trans.Choose')}}</option>`)
+                 $('select#new_student_classes').empty()
+                 $('select#new_student_classes').append(`<option value="" selected>{{__('Parent_trans.Choose')}}</option>`)
                  for(var d of classes){
-                  $('select#student_classes').append(`<option value=${d.id}>${d.class_name}</option>`)
+                  $('select#new_student_classes').append(`<option value=${d.id}>${d.class_name}</option>`)
                  }
                 }
                 else if(data.status===false){
@@ -70,7 +70,7 @@ $(document).on('change', '#student_grades', function (e) {
 
 })
 
-$(document).on('change', '#student_classes', function (e) {
+$(document).on('change', '#new_student_classes', function (e) {
   e.preventDefault();
      var grade_id=$(this).val()
      var lang=$(location).attr('href').includes('ar')?'ar':'en';
@@ -87,10 +87,10 @@ $(document).on('change', '#student_classes', function (e) {
                 if(data.status===true){
                  console.log(data.data)
                  var sections=data.data
-                 $('select#student_sections').empty()
-                 $('select#student_sections').append(`<option value="" selected>{{__('Parent_trans.Choose')}}</option>`)
+                 $('select#new_student_sections').empty()
+                 $('select#new_student_sections').append(`<option value="" selected>{{__('Parent_trans.Choose')}}</option>`)
                  for(var d of sections){
-                  $('select#student_sections').append(`<option value=${d.id}>${lang=='ar'?d.section_name.ar:d.section_name.en}</option>`)
+                  $('select#new_student_sections').append(`<option value=${d.id}>${lang=='ar'?d.section_name.ar:d.section_name.en}</option>`)
                  }
                 }
                 else if(data.status===false){

@@ -26,7 +26,15 @@ return [
     'students'=>'الطلاب',
     'add_student'=>'اضافة طالب جديد',
     'edit_student'=>'تعديل طالب ',
-
-    
+    'failed to save'=>'فشل حفظ البيانات',
+    'Students_Promotions'=>'ترقية الطلاب',
+    'new_school_grade'=>'المرحلة الدراسية الجديدة',
+    'old_school_grade'=>'المرحلة الدراسية القديمة',
+    'management_of_student_promotions'=>'ادارة ترقية الطلاب' ,
+    'list_promotions'=>'الترقيات',
+    'Graduate_students'=>'الطلاب المتخرجين',
+    'add_Graduate'=>'اضافة تخرج جديد',
+    'list_Graduate'=>'قائمة التخرجات',
+    'Are you sure of this process?'=>'هل انت متاكد من هذه العملية؟'
     ];
     

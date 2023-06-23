@@ -189,7 +189,17 @@
                               <small id="academic_year_error"  class="form-text text-danger"></small>
                           </div>
                       </div>
-                      </div><br>
+                      </div>
+                      <br>
+                      <div class="row">
+                      <div class="col-md-4">
+                        <label>{{trans('Parent_trans.Attachments')}}</label>
+                        <div class="form-group">
+                            <input class="form-control" type="file" name="photos[]" accept="image/*" multiple>
+                        </div>
+                      </div>
+                    </div>
+                      <br>
                   <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" id="storeStudent" type="submit">{{trans('Students_trans.submit')}}</button>
               </form>
 

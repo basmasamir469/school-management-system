@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Students;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Students\StoreStudentRequest;
 use App\Http\Requests\Students\UpdateStudentRequest;
+use App\Http\Requests\Students\uploadRequest;
 use App\Repository\StudentRepositoryInterface;
+use Flasher\SweetAlert\Laravel\Facade\SweetAlert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
@@ -53,7 +56,7 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         //
-        $student=$this->student->createStudent(array_except(array_merge(['student_name'=>['en'=>$request->student_name_en,'ar'=>$request->student_name_ar]],$request->all()),['student_name_en','student_name_ar']));
+        $student=$this->student->createStudent($request);
         if($student){
             return response()->json([
                 'data'=>$student,
@@ -62,7 +65,6 @@ class StudentController extends Controller
                 'route'=>route('Students.index')
             ]);
         }
-
             return response()->json([
                 'data'=>[],
                 'status'=>false,
@@ -80,6 +82,8 @@ class StudentController extends Controller
     public function show($id)
     {
         //
+        $Student=$this->student->getStudentById($id);
+        return view('students.show',compact('Student'));
     }
 
     /**
@@ -152,4 +156,40 @@ class StudentController extends Controller
             'msg'=>trans('grades.failed to delete! something wrong is happened')
         ]);
     }
+
+    public function uploadAttachments(uploadRequest $request){
+        $images=$this->student->uploadAttachments($request);
+        if($images){
+            return response()->json([
+                'data'=>$images,
+                'status'=>true,
+                'msg'=>trans('Students_trans.submit')
+            ]);
+        }
+        return response()->json([
+            'data'=>[],
+            'status'=>false,
+            'msg'=>trans('main_trans.failed to save')
+        ]);
+    }
+
+    public function downloadAttachments($file_name,$student_name){
+            return $this->student->downloadAttachments($file_name,$student_name);
+    }
+    public function deleteAttachments(Request $request){
+        $deleted= $this->student->deleteAttachments($request);
+        if($deleted){
+            return response()->json([
+                'data'=>[],
+                'status'=>true,
+                'msg'=>trans('main_trans.data deleted successfully')
+            ]);
+        }
+        return response()->json([
+            'data'=>[],
+            'status'=>false,
+            'msg'=>trans('grades.failed to delete! something wrong is happened')
+        ]); 
+    }
+
 }

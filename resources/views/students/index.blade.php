@@ -61,18 +61,20 @@
                     <td>{{$student->class?->class_name}}</td>
                     <td>{{$student->section?->section_name}}</td>
                     <td>{{$student->academic_year}}</td>
-                    <td>
-                      <a href="{{route('Students.edit',$student->id)}}">
+                    <td class="d-flex">
+                      <a href="{{route('Students.edit',$student->id)}}" class="mr-1">
                         <button type="button" class="btn btn-info btn-sm"
                               title="{{ trans('main_trans.Edit') }}">
                                  <i
                                 class="fa fa-edit"></i>
                         </button>
                       </a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                      <button type="button" class="btn btn-danger btn-sm mr-1" data-toggle="modal"
                               data-target="#deleteStudent{{ $student->id }}"
                               title="{{ trans('main_trans.Delete') }}"><i
-                              class="fa fa-trash"></i></button>
+                              class="fa fa-trash "></i></button>
+                     <a href="{{route('Students.show',$student->id)}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i class="fa fa-eye"></i></a>
+
                   </td>
                 </tr>
                 {{-- deleteModal --}}

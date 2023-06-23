@@ -200,7 +200,17 @@ return [
         'blood_type_id'=>'فصيلة الدم',
         'grade_class_id'=>'الفصل الدراسي',
         'section_id'=>'اسم القسم',
-        'birth_date'=>'تاريخ الميلاد'
+        'birth_date'=>'تاريخ الميلاد',
+        'from_class_id'=>'الفصل الدراسي القديم',
+        'from_grade_id'=>' المرحلة الدراسية القديمة',
+        'from_section_id'=>'القسم القديم',
+        'to_class_id'=>'الفصل الدراسي الجديد',
+        'to_grade_id'=>'المرحلة الدراسية الجديدة',
+        'to_section_id'=>'القسم الجديد',
+        'from_academic_year'=>'السنة الدراسية السابقة',
+        'to_academic_year'=>'السنة الدراسية الحالية',
+        'class_id'=>'الفصل الدراسي'
+
         
         
 

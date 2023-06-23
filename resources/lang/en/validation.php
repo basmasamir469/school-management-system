@@ -197,7 +197,17 @@ return [
         'blood_type_id'=>' blood type',
         'grade_class_id'=>'class name',
         'section_id'=>' section name',
-        'birth_date'=>'birth date'
+        'birth_date'=>'birth date',
+        'from_class_id'=>'old class',
+        'from_grade_id'=>'old grade',
+        'from_section_id'=>'old section',
+        'to_class_id'=>'new class',
+        'to_grade_id'=>'new grade',
+        'to_section_id'=>'new section',
+        'from_academic_year'=>'Old academic year',
+        'to_academic_year'=>'New academic year',
+        'class_id'=>'class name'
+
 
 
 

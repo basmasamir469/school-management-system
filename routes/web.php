@@ -4,6 +4,8 @@ use App\Http\Controllers\GradeClasses\GradeClassController;
 use App\Http\Controllers\GradeClasses\SectionController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Promotions\PromotionController;
+use App\Http\Controllers\Students\StudentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -48,9 +50,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),	'middleware' => [ 'l
 
 	Route::group(['namespace'=>'Students'],function(){
 		Route::resource('Students','StudentController');
+		Route::resource('Graduated','GraduatedController');
+		Route::post('Students/upload/attachments',[StudentController::class,'uploadAttachments'])->name('Students.upload-attachments');
+		Route::get('Students/download/attachments/{file_name}/{student_name}',[StudentController::class,'downloadAttachments'])->name('Students.download-attachments');
+		Route::post('Students/delete/attachments',[StudentController::class,'deleteAttachments'])->name('Students.delete-attachments');
 	});
 
-
+	Route::group(['namespace'=>'Promotions'],function(){
+		Route::resource('Promotions','PromotionController')->except('destroy');
+		Route::post('Promotions/delete',[PromotionController::class,'destroy'])->name('Promotions.destroy');
+		Route::get('Promotions/graduate/{id}',[PromotionController::class,'graduate'])->name('Promotions.graduate');
+	});
 
 
 // Route::get('/empty',[HomeController::class,'empty']);

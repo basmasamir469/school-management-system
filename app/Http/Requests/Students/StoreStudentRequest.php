@@ -33,10 +33,11 @@ class StoreStudentRequest extends FormRequest
             'blood_type_id'=>'required',
             'parent_id'=>'required',
             'password'=>'required|min:6',
-            'birth_date'=>'required',
+            'birth_date'=>'required|date|date_format:Y-m-d',
             'academic_year'=>'required',
             'grade_class_id'=>'required',
-            'section_id'=>'required'
+            'section_id'=>'required',
+            'photos'=>'nullable'
         ];
     }
 }
